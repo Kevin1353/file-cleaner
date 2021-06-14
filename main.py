@@ -5,6 +5,8 @@ import time
 
 # main function to call other functions
 def main():
+    count = 0  # count variable will be used to show how many files are deleted.
+    deleted = []
     path = get_path()
     age = get_age()
     file_list = get_file(path)
@@ -13,6 +15,11 @@ def main():
         file_age = is_file_old(full_file, age)
         if file_age == 1:
             delete_file(full_file)
+            deleted.append(file)
+            count += 1
+    print("Process finished, ", count, " files deleted including: ")
+    for file in deleted:
+        print(file)
 
 
 # asks user to input a path for the folder they would like cleaned
